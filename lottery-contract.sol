@@ -24,8 +24,9 @@ contract Lottery {
 
     function quit() public payable {
         require(isPlayers[msg.sender], "Lottery: you have not entered the Lottery");
-        payable(msg.sender).transfer(moneyPlayers[msg.sender]);
-        moneyPlayers[msg.sender] = 0; 
+        uint amountRefund = moneyPlayers[msg.sender];
+        moneyPlayers[msg.sender] = 0;
+        payable(msg.sender).transfer(amountRefund);         
         isPlayers[msg.sender] = false;       
                     
         for (uint i; i < players.length; i++) {
