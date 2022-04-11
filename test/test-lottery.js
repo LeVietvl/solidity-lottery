@@ -33,7 +33,7 @@ describe("Lottery", function () {
       expect(players[1], accountA.address)
     });
   })
-  describe("pick Winner", function () {
+  describe("quit", function () {
     it("should revert if the player has not entered", async function () {
       await expect(lottery.quit()).to.be.revertedWith("Lottery: you have not entered the Lottery")
     });
@@ -46,7 +46,7 @@ describe("Lottery", function () {
       expect (await lottery.getNumOfPlayer()).to.be.equal(2)
     });
   })
-  describe("quit", function () {
+  describe("pick Winner", function () {
     beforeEach(async () => {
       await lottery.enter({ value: ethers.utils.parseEther("1.0")})
       await lottery.connect(accountA).enter({ value: ethers.utils.parseEther("1.0")})
