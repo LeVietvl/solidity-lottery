@@ -33,7 +33,7 @@ describe("Lottery", function () {
       expect(players[1], accountA.address)
     });
   })
-  describe("quit", function () {
+  describe("pick Winner", function () {
     it("should revert if the player has not entered", async function () {
       await expect(lottery.quit()).to.be.revertedWith("Lottery: you have not entered the Lottery")
     });
